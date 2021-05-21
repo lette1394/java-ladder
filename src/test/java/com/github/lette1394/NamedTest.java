@@ -7,11 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 class NamedTest {
+  private static final String ANY_NAME = "pobi";
 
   @Test
   void 서로_같음_기준() {
-    final Point point1 = new Named("pobi");
-    final Point point2 = new Named("pobi");
+    final Point point1 = new Named(ANY_NAME);
+    final Point point2 = new Named(ANY_NAME);
     assertThat(point1, is(point2));
   }
 
@@ -23,7 +24,7 @@ class NamedTest {
 
   @Test
   void toString은_이름을_표현한다() {
-    final Point point = new Named("pobi");
-    assertThat(point.toString(), is("pobi"));
+    final Point point = new Named(ANY_NAME);
+    assertThat(point.toString(), is(ANY_NAME));
   }
 }
