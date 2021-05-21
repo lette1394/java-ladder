@@ -7,40 +7,40 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-class StringPointTest {
+class PointTest {
   private static final String ANY_NAME = "pobi";
 
   @Test
   void 이름이_같으면_서로_같다() {
-    assertThat(new StringPoint(ANY_NAME), is(new StringPoint(ANY_NAME)));
+    assertThat(new Point(ANY_NAME), is(new Point(ANY_NAME)));
   }
 
   @Test
   void 이름이_될_수_없는_값들() {
-    assertThrows(ContractsViolationException.class, () -> new StringPoint(null));
-    assertThrows(ContractsViolationException.class, () -> new StringPoint(""));
+    assertThrows(ContractsViolationException.class, () -> new Point(null));
+    assertThrows(ContractsViolationException.class, () -> new Point(""));
   }
 
   @Test
   void toString은_이름을_표현한다() {
-    assertThat(new StringPoint(ANY_NAME), isString(ANY_NAME));
+    assertThat(new Point(ANY_NAME), isString(ANY_NAME));
   }
 
   @Test
   void above() {
-    final Point up = new StringPoint("aa");
-    final Point down = new StringPoint("bbbb");
+    final Point up = new Point("aa");
+    final Point down = new Point("bbbb");
 
     assertThat(up.above(down), isString("aaaa\nbbbb"));
   }
 
   @Test
   void above2D() {
-    final Point up = new StringPoint(""
+    final Point up = new Point(""
       + "aaa\n"
       + "aaa\n"
       + "aaa");
-    final Point down = new StringPoint(""
+    final Point down = new Point(""
       + "bbbbb\n"
       + "bbbbb");
 
@@ -54,19 +54,19 @@ class StringPointTest {
 
   @Test
   void beside() {
-    final Point left = new StringPoint("left");
-    final Point right = new StringPoint("right");
+    final Point left = new Point("left");
+    final Point right = new Point("right");
 
     assertThat(left.beside(right), isString("leftright"));
   }
 
   @Test
   void beside2D() {
-    final Point left = new StringPoint(""
+    final Point left = new Point(""
       + "aaa\n"
       + "aaa\n"
       + "aaa");
-    final Point right = new StringPoint(""
+    final Point right = new Point(""
       + "bbbbb\n"
       + "bbbbb");
 
@@ -78,16 +78,16 @@ class StringPointTest {
 
   @Test
   void widen() {
-    final Point base = new StringPoint("a");
-    final Point width = new StringPoint("width");
+    final Point base = new Point("a");
+    final Point width = new Point("width");
 
     assertThat(base.widen(width), isString("aaaaa"));
   }
 
   @Test
   void heighten() {
-    final Point base = new StringPoint("base");
-    final Point height = new StringPoint(""
+    final Point base = new Point("base");
+    final Point height = new Point(""
       + "line1\n"
       + "line2");
 
@@ -96,9 +96,9 @@ class StringPointTest {
 
   @Test
   void square() {
-    final Point root = new StringPoint("a");
-    final Point width = new StringPoint("    ");
-    final Point height = new StringPoint("\n\n\n\n");
+    final Point root = new Point("a");
+    final Point width = new Point("    ");
+    final Point height = new Point("\n\n\n\n");
 
     final Point square = root.widen(width).heighten(height);
     assertThat(square, isString(""
