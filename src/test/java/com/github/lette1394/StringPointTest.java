@@ -6,25 +6,25 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-class NamedTest {
+class StringPointTest {
   private static final String ANY_NAME = "pobi";
 
   @Test
   void 이름이_같으면_서로_같다() {
-    final Point point1 = new Named(ANY_NAME);
-    final Point point2 = new Named(ANY_NAME);
+    final Point point1 = new StringPoint(ANY_NAME);
+    final Point point2 = new StringPoint(ANY_NAME);
     assertThat(point1, is(point2));
   }
 
   @Test
   void 이름이_될_수_없는_값들() {
-    assertThrows(ContractsViolationException.class, () -> new Named(null));
-    assertThrows(ContractsViolationException.class, () -> new Named(""));
+    assertThrows(ContractsViolationException.class, () -> new StringPoint(null));
+    assertThrows(ContractsViolationException.class, () -> new StringPoint(""));
   }
 
   @Test
   void toString은_이름을_표현한다() {
-    final Point point = new Named(ANY_NAME);
+    final Point point = new StringPoint(ANY_NAME);
     assertThat(point.toString(), is(ANY_NAME));
   }
 }
