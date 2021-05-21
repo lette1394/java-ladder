@@ -12,9 +12,7 @@ class StringPointTest {
 
   @Test
   void 이름이_같으면_서로_같다() {
-    final Point point1 = new StringPoint(ANY_NAME);
-    final Point point2 = new StringPoint(ANY_NAME);
-    assertThat(point1, is(point2));
+    assertThat(new StringPoint(ANY_NAME), is(new StringPoint(ANY_NAME)));
   }
 
   @Test
@@ -25,37 +23,88 @@ class StringPointTest {
 
   @Test
   void toString은_이름을_표현한다() {
-    final Point point = new StringPoint(ANY_NAME);
-    assertThat(point, isString(ANY_NAME));
+    assertThat(new StringPoint(ANY_NAME), isString(ANY_NAME));
   }
 
   @Test
   void above() {
-    final Point up = new StringPoint("up");
-    final Point down = new StringPoint("down");
-    assertThat(up.above(down), isString("up\ndown"));
+    final Point up = new StringPoint("aa");
+    final Point down = new StringPoint("bbbb");
+
+    assertThat(up.above(down), isString("aaaa\nbbbb"));
+  }
+
+  @Test
+  void above2D() {
+    final Point up = new StringPoint(""
+      + "aaa\n"
+      + "aaa\n"
+      + "aaa");
+    final Point down = new StringPoint(""
+      + "bbbbb\n"
+      + "bbbbb");
+
+    assertThat(up.above(down), isString(""
+      + "aaaaa\n"
+      + "aaaaa\n"
+      + "aaaaa\n"
+      + "bbbbb\n"
+      + "bbbbb"));
   }
 
   @Test
   void beside() {
     final Point left = new StringPoint("left");
     final Point right = new StringPoint("right");
+
     assertThat(left.beside(right), isString("leftright"));
   }
 
   @Test
+  void beside2D() {
+    final Point left = new StringPoint(""
+      + "aaa\n"
+      + "aaa\n"
+      + "aaa");
+    final Point right = new StringPoint(""
+      + "bbbbb\n"
+      + "bbbbb");
+
+    assertThat(left.beside(right), isString(""
+      + "aaabbbbb\n"
+      + "aaabbbbb\n"
+      + "aaabbbbb"));
+  }
+
+  @Test
   void widen() {
-    final Point point1 = new StringPoint("base");
-    final Point point2 = new StringPoint("widen");
-    assertThat(point1.widen(point2), isString("base "));
+    final Point base = new StringPoint("a");
+    final Point width = new StringPoint("width");
+
+    assertThat(base.widen(width), isString("aaaaa"));
   }
 
   @Test
   void heighten() {
-    final Point point1 = new StringPoint("base");
-    final Point point2 = new StringPoint(""
+    final Point base = new StringPoint("base");
+    final Point height = new StringPoint(""
       + "line1\n"
       + "line2");
-    assertThat(point1.heighten(point2), isString("base\n"));
+
+    assertThat(base.heighten(height), isString("base\nbase"));
+  }
+
+  @Test
+  void square() {
+    final Point root = new StringPoint("a");
+    final Point width = new StringPoint("    ");
+    final Point height = new StringPoint("\n\n\n\n");
+
+    final Point square = root.widen(width).heighten(height);
+    assertThat(square, isString(""
+      + "aaaa\n"
+      + "aaaa\n"
+      + "aaaa\n"
+      + "aaaa"));
   }
 }
