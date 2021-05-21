@@ -4,6 +4,7 @@ import static com.github.lette1394.Contracts.requires;
 import static java.lang.String.format;
 
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class StringPoint implements Point {
   private final String value;
@@ -19,28 +20,33 @@ public class StringPoint implements Point {
   }
 
   @Override
-  public Point above(Point other) {
-    return new StringPoint(format("%s\n%s", this, other));
+  public Point above(Point that) {
+    return new StringPoint(format("%s\n%s", this, that));
   }
 
   @Override
-  public Point beside(Point other) {
-    return new StringPoint(format("%s%s", this, other));
+  public Point beside(Point that) {
+    return new StringPoint(format("%s%s", this, that));
   }
 
   @Override
-  public Point widen(Point other) {
-    final int maximum = other.toString().length();
-    final int current = toString().length();
+  public Point widen(Point that) {
+    final int maximum = that.toString().length();
+    final int current = this.toString().length();
     if (current >= maximum) {
       return this;
     }
-    return new StringPoint(String.format("%s%s", value, " ".repeat(maximum - current)));
+    return new StringPoint(format("%s%s", value, " ".repeat(maximum - current)));
   }
 
   @Override
-  public Point heighten(Point other) {
-    return null;
+  public Point heighten(Point that) {
+    int maximum = that.toString().split("\n").length;
+    int current = this.toString().split("\n").length;
+    if (current >= maximum) {
+      return this;
+    }
+    return new StringPoint(format("%s%s", value, "\n".repeat(maximum - current)));
   }
 
   @Override

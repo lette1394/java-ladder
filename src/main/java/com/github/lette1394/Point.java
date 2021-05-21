@@ -1,11 +1,11 @@
 package com.github.lette1394;
 
 public interface Point {
-  Point above(Point other);
+  Point above(Point that);
 
-  Point beside(Point other);
+  Point beside(Point that);
 
-  Point widen(Point other);
+  Point widen(Point that);
 
-  Point heighten(Point other);
+  Point heighten(Point that);
 }

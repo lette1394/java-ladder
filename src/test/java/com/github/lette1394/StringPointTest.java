@@ -49,4 +49,13 @@ class StringPointTest {
     final Point point2 = new StringPoint("widen");
     assertThat(point1.widen(point2), isString("base "));
   }
+
+  @Test
+  void heighten() {
+    final Point point1 = new StringPoint("base");
+    final Point point2 = new StringPoint(""
+      + "line1\n"
+      + "line2");
+    assertThat(point1.heighten(point2), isString("base\n"));
+  }
 }
