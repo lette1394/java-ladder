@@ -11,8 +11,3 @@ public final class Contracts {
   }
 }
 
-class ContractsViolationException extends RuntimeException {
-  public ContractsViolationException(String message) {
-    super(message);
-  }
-}
