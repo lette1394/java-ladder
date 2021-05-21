@@ -27,4 +27,11 @@ class StringPointTest {
     final Point point = new StringPoint(ANY_NAME);
     assertThat(point.toString(), is(ANY_NAME));
   }
+
+  @Test
+  void test() {
+    final Point up = new StringPoint("up");
+    final Point down = new StringPoint("down");
+    assertThat(up.above(down), is("up\ndown"));
+  }
 }

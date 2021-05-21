@@ -13,6 +13,20 @@ public class StringPoint implements Point {
     this.value = value;
   }
 
+  public static Point line(int size) {
+    return new StringPoint(" ".repeat(size));
+  }
+
+  @Override
+  public Point above(Point point) {
+    return null;
+  }
+
+  @Override
+  public Point beside(Point point) {
+    return null;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
