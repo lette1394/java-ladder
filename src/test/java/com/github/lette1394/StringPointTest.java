@@ -42,4 +42,11 @@ class StringPointTest {
     final Point right = new StringPoint("right");
     assertThat(left.beside(right), isString("leftright"));
   }
+
+  @Test
+  void widen() {
+    final Point point1 = new StringPoint("base");
+    final Point point2 = new StringPoint("widen");
+    assertThat(point1.widen(point2), isString("base "));
+  }
 }

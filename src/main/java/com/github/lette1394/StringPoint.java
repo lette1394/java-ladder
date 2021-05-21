@@ -29,6 +29,21 @@ public class StringPoint implements Point {
   }
 
   @Override
+  public Point widen(Point other) {
+    final int maximum = other.toString().length();
+    final int current = toString().length();
+    if (current >= maximum) {
+      return this;
+    }
+    return new StringPoint(String.format("%s%s", value, " ".repeat(maximum - current)));
+  }
+
+  @Override
+  public Point heighten(Point other) {
+    return null;
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) {
       return true;
