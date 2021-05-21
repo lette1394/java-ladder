@@ -35,4 +35,11 @@ class StringPointTest {
     final Point down = new StringPoint("down");
     assertThat(up.above(down), isString("up\ndown"));
   }
+
+  @Test
+  void beside() {
+    final Point left = new StringPoint("left");
+    final Point right = new StringPoint("right");
+    assertThat(left.beside(right), isString("leftright"));
+  }
 }

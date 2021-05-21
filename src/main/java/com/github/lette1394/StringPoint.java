@@ -25,7 +25,7 @@ public class StringPoint implements Point {
 
   @Override
   public Point beside(Point other) {
-    return null;
+    return new StringPoint(format("%s%s", this, other));
   }
 
   @Override
