@@ -13,3 +13,7 @@ dependencies {
     testCompile('org.assertj:assertj-core:3.11.1')
     testCompile('org.hamcrest:hamcrest-core:2.2')
 }
+
+test {
+    useJUnitPlatform()
+}
