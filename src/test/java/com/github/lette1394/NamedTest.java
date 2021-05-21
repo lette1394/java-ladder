@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.is;
 class NamedTest {
 
   @Test
-  void equals() {
+  void 서로_같음_기준() {
     final Point point1 = new Named("pobi");
     final Point point2 = new Named("pobi");
     assertThat(point1, is(point2));
