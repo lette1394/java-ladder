@@ -1,7 +1,7 @@
 package com.github.lette1394;
 
 public interface Point {
-  Point above(Point point);
+  Point above(Point other);
 
-  Point beside(Point point);
+  Point beside(Point other);
 }

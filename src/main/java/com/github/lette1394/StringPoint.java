@@ -1,6 +1,7 @@
 package com.github.lette1394;
 
 import static com.github.lette1394.Contracts.requires;
+import static java.lang.String.format;
 
 import java.util.Objects;
 
@@ -18,12 +19,12 @@ public class StringPoint implements Point {
   }
 
   @Override
-  public Point above(Point point) {
-    return null;
+  public Point above(Point other) {
+    return new StringPoint(format("%s\n%s", this, other));
   }
 
   @Override
-  public Point beside(Point point) {
+  public Point beside(Point other) {
     return null;
   }
 

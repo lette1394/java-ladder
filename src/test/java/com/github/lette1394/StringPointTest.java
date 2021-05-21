@@ -1,5 +1,6 @@
 package com.github.lette1394;
 
+import static com.github.lette1394.StringPointMatcher.isString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -25,13 +26,13 @@ class StringPointTest {
   @Test
   void toString은_이름을_표현한다() {
     final Point point = new StringPoint(ANY_NAME);
-    assertThat(point.toString(), is(ANY_NAME));
+    assertThat(point, isString(ANY_NAME));
   }
 
   @Test
-  void test() {
+  void above() {
     final Point up = new StringPoint("up");
     final Point down = new StringPoint("down");
-    assertThat(up.above(down), is("up\ndown"));
+    assertThat(up.above(down), isString("up\ndown"));
   }
 }
