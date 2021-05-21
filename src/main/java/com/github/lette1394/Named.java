@@ -9,6 +9,7 @@ public class Named implements Point {
 
   public Named(String name) {
     requires(name != null, "이름은 반드시 존재해야 합니다");
+    requires(name.length() > 0, "이름은 한 글자 이상 작성해야 합니다");
     this.name = name;
   }
 

@@ -18,5 +18,6 @@ class NamedTest {
   @Test
   void 이름에_들어갈_수_있는_값() {
     assertThrows(ContractsViolationException.class, () -> new Named(null));
+    assertThrows(ContractsViolationException.class, () -> new Named(""));
   }
 }
