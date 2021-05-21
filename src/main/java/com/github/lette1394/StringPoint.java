@@ -7,11 +7,11 @@ import static java.lang.String.format;
 import static java.lang.System.lineSeparator;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.IntStream.range;
 import static java.util.stream.IntStream.rangeClosed;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class StringPoint implements Point {
   private final String value;
@@ -34,9 +34,10 @@ public class StringPoint implements Point {
     final List<String> thisLines = this.heighten(that).toString().lines().collect(toList());
     final List<String> thatLines = that.heighten(this).toString().lines().collect(toList());
 
-    return new StringPoint(IntStream.range(0, min(thisLines.size(), thatLines.size()))
+    final String next = range(0, min(thisLines.size(), thatLines.size()))
       .mapToObj(i -> thisLines.get(i) + thatLines.get(i))
-      .collect(joining(lineSeparator())));
+      .collect(joining(lineSeparator()));
+    return new StringPoint(next);
   }
 
   @Override
@@ -48,9 +49,10 @@ public class StringPoint implements Point {
     }
 
     final String append = Character.toString(value.charAt(0)).repeat(maximum - current);
-    return new StringPoint(this.toString().lines()
+    final String next = this.toString().lines()
       .map(base -> base + append)
-      .collect(joining(lineSeparator())));
+      .collect(joining(lineSeparator()));
+    return new StringPoint(next);
   }
 
   @Override
