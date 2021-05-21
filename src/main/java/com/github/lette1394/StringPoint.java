@@ -4,7 +4,6 @@ import static com.github.lette1394.Contracts.requires;
 import static java.lang.String.format;
 
 import java.util.Objects;
-import java.util.stream.Stream;
 
 public class StringPoint implements Point {
   private final String value;
