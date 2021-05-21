@@ -20,4 +20,10 @@ class NamedTest {
     assertThrows(ContractsViolationException.class, () -> new Named(null));
     assertThrows(ContractsViolationException.class, () -> new Named(""));
   }
+
+  @Test
+  void toString은_이름을_표현한다() {
+    final Point point = new Named("pobi");
+    assertThat(point.toString(), is("pobi"));
+  }
 }
