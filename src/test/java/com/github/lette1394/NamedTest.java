@@ -10,14 +10,14 @@ class NamedTest {
   private static final String ANY_NAME = "pobi";
 
   @Test
-  void 서로_같음_기준() {
+  void 이름이_같으면_서로_같다() {
     final Point point1 = new Named(ANY_NAME);
     final Point point2 = new Named(ANY_NAME);
     assertThat(point1, is(point2));
   }
 
   @Test
-  void 이름에_들어갈_수_있는_값() {
+  void 이름이_될_수_없는_값들() {
     assertThrows(ContractsViolationException.class, () -> new Named(null));
     assertThrows(ContractsViolationException.class, () -> new Named(""));
   }
