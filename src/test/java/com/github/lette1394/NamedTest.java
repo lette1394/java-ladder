@@ -1,10 +1,10 @@
 package com.github.lette1394;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 class NamedTest {
 
@@ -13,5 +13,10 @@ class NamedTest {
     final Point point1 = new Named("pobi");
     final Point point2 = new Named("pobi");
     assertThat(point1, is(point2));
+  }
+
+  @Test
+  void 이름에_들어갈_수_있는_값() {
+    assertThrows(ContractsViolationException.class, () -> new Named(null));
   }
 }
